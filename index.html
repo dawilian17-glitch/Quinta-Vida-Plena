@@ -103,7 +103,16 @@ footer{
 </nav>
 <a href="#reservas" class="btn-reserva">📅 Reservar Ahora</a>
     <section id="reservas">
-    <https://formspree.io/f/mqeogroa>
+    <h2>Reservar la Quinta</h2>
+
+    <form action="https://formspree.io/f/mqeogroa" method="POST">
+        <input type="text" name="nombre" placeholder="Nombre" required>
+        <input type="tel" name="telefono" placeholder="Teléfono" required>
+        <input type="date" name="fecha" required>
+        <input type="number" name="personas" placeholder="Personas" required>
+        <textarea name="mensaje" placeholder="Mensaje"></textarea>
+        <button type="submit">Enviar</button>
+    </form>
 </section>
 <section id="nosotros">
     <h2>Sobre Nosotros</h2>
