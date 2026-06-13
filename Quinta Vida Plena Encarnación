@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quinta Vida Plena</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        scroll-behavior: smooth;
+    }
+
+    /* HEADER */
+    header {
+        background-color: #2e7d32;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        animation: fadeDown 1s ease-in-out;
+    }
+
+    nav {
+        background: #1b5e20;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    nav a {
+        color: white;
+        padding: 14px 20px;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+
+    nav a:hover {
+        background: #43a047;
+        transform: scale(1.1);
+    }
+
+    .hero {
+        background: url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6') center/cover;
+        height: 320px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 28px;
+        font-weight: bold;
+        text-shadow: 2px 2px 4px black;
+        animation: fadeIn 2s ease-in-out;
+    }
+
+    section {
+        padding: 40px;
+        background: white;
+        margin: 15px;
+        border-radius: 10px;
+        opacity: 0;
+        transform: translateY(30px);
+        animation: slideUp 1s ease forwards;
+    }
+
+    h2 {
+        color: #2e7d32;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+    }
+
+    .card {
+        background: #e8f5e9;
+        padding: 15px;
+        border-radius: 10px;
+        text-align: center;
+        transition: 0.3s;
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+        background: #c8e6c9;
+    }
+
+    iframe {
+        width: 100%;
+        height: 300px;
+        border: none;
+        border-radius: 10px;
+    }
+
+    footer {
+        background: #1b5e20;
+        color: white;
+        text-align: center;
+        padding: 15px;
+    }
+
+    /* 💬 WHATSAPP BUTTON */
+    .whatsapp {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #25D366;
+        color: white;
+        padding: 15px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-size: 18px;
+        box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+        transition: 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .whatsapp:hover {
+        transform: scale(1.1);
+        background: #1ebe5d;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeIn {
+        from {opacity: 0;}
+        to {opacity: 1;}
+    }
+
+    @keyframes fadeDown {
+        from {opacity: 0; transform: translateY(-20px);}
+        to {opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes slideUp {
+        to {opacity: 1; transform: translateY(0);}
+    }
+</style>
+
+</head>
+
+<body>
+
+<header>
+    <h1>Quinta Vida Plena</h1>
+    <p>Un lugar para disfrutar, aprender y compartir</p>
+</header>
+
+<nav>
+    <a href="#nosotros">Sobre nosotros</a>
+    <a href="#instalaciones">Instalaciones</a>
+    <a href="#actividades">Actividades</a>
+    <a href="#ubicacion">Ubicación</a>
+    <a href="#contacto">Contacto</a>
+</nav>
+
+<div class="hero">
+    Bienvenido a la Quinta Vida Plena
+</div>
+
+<!-- SOBRE NOSOTROS -->
+<section id="nosotros">
+    <h2>Sobre nosotros</h2>
+    <p>La Quinta Vida Plena es un espacio creado para la recreación, el aprendizaje y la convivencia en un ambiente natural y agradable.</p>
+</section>
+
+<!-- INSTALACIONES -->
+<section id="instalaciones">
+    <h2>Instalaciones</h2>
+    <div class="grid">
+        <div class="card">🌳 Áreas verdes</div>
+        <div class="card">🏊 Piscina</div>
+        <div class="card">🏠 Salón principal</div>
+        <div class="card">⚽ Cancha deportiva</div>
+        <div class="card">🪑 Zona de descanso</div>
+    </div>
+</section>
+
+<!-- ACTIVIDADES -->
+<section id="actividades">
+    <h2>Actividades</h2>
+    <ul>
+        <li>Eventos escolares</li>
+        <li>Cumpleaños y celebraciones</li>
+        <li>Reuniones familiares</li>
+        <li>Juegos recreativos</li>
+    </ul>
+</section>
+
+<!-- UBICACIÓN -->
+<section id="ubicacion">
+    <h2>📍 Ubicación</h2>
+
+    <iframe 
+        src="https://www.google.com/maps?q=Quinta%20Vida%20Plena%20Paraguay&output=embed">
+    </iframe>
+
+    <br><br>
+
+    <a href="https://www.google.com/maps/dir/?api=1&destination=https://maps.app.goo.gl/7ooVs6ssrBMogRmt6"
+       target="_blank"
+       style="
+            display:inline-block;
+            background:#2e7d32;
+            color:white;
+            padding:12px 18px;
+            text-decoration:none;
+            border-radius:8px;
+            font-weight:bold;
+       ">
+        🚗 Cómo llegar
+    </a>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+    <h2>Contacto</h2>
+    <p>📞 WhatsApp: 0992 529 530</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    © 2026 Quinta Vida Plena - Todos los derechos reservados
+</footer>
+
+<!-- WHATSAPP BUTTON -->
+<a class="whatsapp" href="https://wa.me/595992529530" target="_blank">
+    💬 WhatsApp
+</a>
+
+</body>
+</html>
