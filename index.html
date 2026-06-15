@@ -1,183 +1,935 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quinta Vida Plena Enc</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quinta Vida Plena Encarnación</title>
+  <meta name="description" content="Quinta Vida Plena Encarnación: alojamiento, naturaleza, reservas y estadías especiales para el Rally de Paraguay 2026.">
+  <style>
+    :root {
+      --ink: #14211d;
+      --muted: #5e6a64;
+      --paper: #fbfaf6;
+      --mist: #edf2ed;
+      --leaf: #2f6f4f;
+      --leaf-dark: #184b37;
+      --sun: #e5a73b;
+      --clay: #b95236;
+      --river: #2f6f8f;
+      --white: #ffffff;
+      --shadow: 0 22px 60px rgba(20, 33, 29, .16);
+      --radius: 8px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, sans-serif;
-}
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.55;
+    }
 
-header{
-    background:url(inicio.jpeg) center/cover;
-    height:70vh;
-    color:white;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-}
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
 
-header h1{
-    font-size:3rem;
-    background:rgba(0,0,0,0.5);
-    padding:20px;
-    border-radius:10px;
-}
+    .nav {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 20;
+      background: rgba(251, 250, 246, .86);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(20, 33, 29, .08);
+    }
 
-nav{
-    background:#0056b3;
-    padding:15px;
-    position:sticky;
-    top:0;
-}
+    .nav-inner,
+    .wrap {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
 
-nav ul{
-    display:flex;
-    justify-content:center;
-    list-style:none;
-    gap:20px;
-}
+    .nav-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
 
-nav a{
-    color:white;
-    text-decoration:none;
-    font-weight:bold;
-}
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
 
-section{
-    padding:50px 20px;
-}
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: conic-gradient(from 120deg, var(--leaf), var(--river), var(--sun), var(--leaf));
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      box-shadow: 0 10px 24px rgba(47, 111, 79, .28);
+    }
 
-.tarjetas{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
-}
+    .brand-mark svg,
+    .icon {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
 
-.tarjeta{
-    background:#f5f5f5;
-    padding:20px;
-    border-radius:10px;
-    box-shadow:0 2px 8px rgba(0,0,0,0.1);
-}
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
 
-.btn{
-    display:inline-block;
-    background:#ff6600;
-    color:white;
-    padding:12px 20px;
-    border-radius:5px;
-    text-decoration:none;
-    margin-top:15px;
-}
+    .nav-links a {
+      padding: 10px 12px;
+      border-radius: 999px;
+    }
 
-footer{
-    background:#003366;
-    color:white;
-    text-align:center;
-    padding:20px;
-}
-</style>
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--ink);
+      background: rgba(47, 111, 79, .08);
+      outline: none;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 46px;
+      padding: 12px 18px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--leaf);
+      color: var(--white);
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 14px 34px rgba(47, 111, 79, .24);
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-2px);
+      background: var(--leaf-dark);
+      outline: none;
+      box-shadow: 0 18px 38px rgba(47, 111, 79, .3);
+    }
+
+    .btn.secondary {
+      background: var(--white);
+      color: var(--ink);
+      box-shadow: 0 12px 28px rgba(20, 33, 29, .12);
+      border: 1px solid rgba(20, 33, 29, .08);
+    }
+
+    .hero {
+      min-height: 94vh;
+      padding: 108px 0 54px;
+      color: var(--white);
+      background:
+        linear-gradient(90deg, rgba(12, 25, 20, .82), rgba(12, 25, 20, .36) 54%, rgba(12, 25, 20, .14)),
+        url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2200&q=82") center / cover;
+      display: flex;
+      align-items: end;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 340px;
+      gap: 34px;
+      align-items: end;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 18px;
+      color: rgba(255, 255, 255, .88);
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    h1,
+    h2,
+    h3,
+    p { margin-top: 0; }
+
+    h1 {
+      max-width: 820px;
+      margin-bottom: 18px;
+      font-size: clamp(46px, 8vw, 92px);
+      line-height: .95;
+      letter-spacing: 0;
+    }
+
+    .hero-copy {
+      max-width: 690px;
+      margin-bottom: 28px;
+      color: rgba(255, 255, 255, .88);
+      font-size: clamp(18px, 2.1vw, 24px);
+    }
+
+    .hero-actions,
+    .form-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .availability {
+      padding: 22px;
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, .92);
+      color: var(--ink);
+      box-shadow: var(--shadow);
+    }
+
+    .availability strong {
+      display: block;
+      font-size: 28px;
+      line-height: 1.05;
+      margin-bottom: 8px;
+    }
+
+    .availability p {
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .quick-facts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(20, 33, 29, .1);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .fact {
+      background: var(--white);
+      padding: 14px 12px;
+    }
+
+    .fact b {
+      display: block;
+      font-size: 20px;
+      color: var(--leaf-dark);
+    }
+
+    .fact span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    section {
+      padding: 88px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 28px;
+      align-items: end;
+      margin-bottom: 34px;
+    }
+
+    .section-head h2 {
+      max-width: 680px;
+      margin-bottom: 0;
+      font-size: clamp(32px, 5vw, 56px);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .section-head p {
+      max-width: 430px;
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 26px;
+      align-items: stretch;
+    }
+
+    .feature-photo {
+      min-height: 460px;
+      border-radius: var(--radius);
+      background:
+        linear-gradient(180deg, rgba(20, 33, 29, .04), rgba(20, 33, 29, .24)),
+        url("https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1500&q=82") center / cover;
+      box-shadow: var(--shadow);
+    }
+
+    .amenities {
+      display: grid;
+      gap: 12px;
+    }
+
+    .amenity {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 14px;
+      align-items: start;
+      padding: 18px;
+      border-radius: var(--radius);
+      background: var(--white);
+      border: 1px solid rgba(20, 33, 29, .08);
+      box-shadow: 0 10px 24px rgba(20, 33, 29, .06);
+    }
+
+    .amenity .badge {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--leaf-dark);
+      background: var(--mist);
+    }
+
+    .amenity h3 {
+      margin-bottom: 4px;
+      font-size: 18px;
+    }
+
+    .amenity p {
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .gallery {
+      background: #f4f0e8;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .gallery-item {
+      position: relative;
+      min-height: 260px;
+      border: 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: #d8ded5;
+      cursor: zoom-in;
+      box-shadow: 0 12px 28px rgba(20, 33, 29, .1);
+    }
+
+    .gallery-item:nth-child(1),
+    .gallery-item:nth-child(4) {
+      grid-column: span 2;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .35s ease;
+    }
+
+    .gallery-item:hover img,
+    .gallery-item:focus-visible img {
+      transform: scale(1.05);
+    }
+
+    .gallery-caption {
+      position: absolute;
+      left: 12px;
+      bottom: 12px;
+      padding: 8px 11px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .9);
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .rally {
+      color: var(--white);
+      background:
+        linear-gradient(90deg, rgba(23, 22, 19, .88), rgba(87, 55, 34, .54)),
+        url("https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&w=2200&q=82") center / cover;
+    }
+
+    .rally-layout {
+      display: grid;
+      grid-template-columns: minmax(0, .95fr) minmax(280px, .55fr);
+      gap: 36px;
+      align-items: center;
+    }
+
+    .rally h2 {
+      font-size: clamp(36px, 6vw, 72px);
+      line-height: .98;
+      margin-bottom: 18px;
+    }
+
+    .rally p {
+      max-width: 700px;
+      color: rgba(255, 255, 255, .86);
+      font-size: 18px;
+    }
+
+    .rally-cards {
+      display: grid;
+      gap: 12px;
+    }
+
+    .rally-card {
+      border-radius: var(--radius);
+      padding: 18px;
+      background: rgba(255, 255, 255, .12);
+      border: 1px solid rgba(255, 255, 255, .18);
+      backdrop-filter: blur(12px);
+    }
+
+    .rally-card b {
+      display: block;
+      margin-bottom: 5px;
+      color: #fff7df;
+      font-size: 20px;
+    }
+
+    .booking {
+      background: var(--paper);
+    }
+
+    .booking-layout {
+      display: grid;
+      grid-template-columns: .75fr 1fr;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .booking-aside {
+      position: sticky;
+      top: 96px;
+    }
+
+    .booking-aside h2 {
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .booking-aside p {
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      padding: 24px;
+      border-radius: var(--radius);
+      background: var(--white);
+      border: 1px solid rgba(20, 33, 29, .08);
+      box-shadow: var(--shadow);
+    }
+
+    label {
+      display: grid;
+      gap: 7px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      min-height: 48px;
+      border: 1px solid rgba(20, 33, 29, .14);
+      border-radius: var(--radius);
+      padding: 12px 13px;
+      color: var(--ink);
+      background: #fbfbf8;
+      font: inherit;
+      outline: none;
+      transition: border .18s ease, box-shadow .18s ease;
+    }
+
+    textarea {
+      min-height: 118px;
+      resize: vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--leaf);
+      box-shadow: 0 0 0 4px rgba(47, 111, 79, .12);
+    }
+
+    .full { grid-column: 1 / -1; }
+
+    .note {
+      color: var(--muted);
+      font-size: 13px;
+      margin: 0;
+    }
+
+    .form-status {
+      min-height: 22px;
+      color: var(--leaf-dark);
+      font-weight: 800;
+    }
+
+    footer {
+      padding: 36px 0 92px;
+      color: var(--muted);
+      background: var(--mist);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 30;
+      width: 62px;
+      height: 62px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #25d366;
+      color: #fff;
+      box-shadow: 0 18px 38px rgba(37, 211, 102, .35);
+      transition: transform .18s ease;
+    }
+
+    .whatsapp-float:hover,
+    .whatsapp-float:focus-visible {
+      transform: translateY(-3px) scale(1.03);
+      outline: none;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 28px;
+      background: rgba(9, 16, 14, .86);
+    }
+
+    .lightbox.open { display: flex; }
+
+    .lightbox img {
+      max-height: 82vh;
+      width: min(1100px, 100%);
+      object-fit: contain;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .lightbox button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 46px;
+      height: 46px;
+      border: 0;
+      border-radius: 50%;
+      background: var(--white);
+      color: var(--ink);
+      cursor: pointer;
+      font-size: 26px;
+      line-height: 1;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hero {
+        min-height: auto;
+        padding-top: 112px;
+      }
+      .hero-grid,
+      .experience-grid,
+      .rally-layout,
+      .booking-layout {
+        grid-template-columns: 1fr;
+      }
+      .availability,
+      .booking-aside {
+        position: static;
+      }
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .gallery-item,
+      .gallery-item:nth-child(1),
+      .gallery-item:nth-child(4) {
+        grid-column: span 1;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .nav-inner,
+      .wrap {
+        width: min(100% - 28px, 1180px);
+      }
+      .nav-inner { min-height: 66px; }
+      .brand span { max-width: 190px; line-height: 1.1; }
+      .hero { padding-bottom: 36px; }
+      h1 { font-size: 45px; }
+      section { padding: 62px 0; }
+      .section-head {
+        display: block;
+      }
+      .section-head h2 {
+        margin-bottom: 14px;
+      }
+      .quick-facts,
+      .gallery-grid,
+      form {
+        grid-template-columns: 1fr;
+      }
+      .feature-photo,
+      .gallery-item {
+        min-height: 240px;
+      }
+      .whatsapp-float {
+        width: 56px;
+        height: 56px;
+        right: 16px;
+        bottom: 16px;
+      }
+    }
+  </style>
 </head>
-
 <body>
-
-<header>
-    <h1>Quinta Vida Plena Enc</h1>
-</header>
-
-<nav>
-    <ul>
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#nosotros">Nosotros</a></li>
-        <li><a href="#rally">Rally Mundial</a></li>
-        <li><a href="#galeria">Galería</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-    </ul>
-</nav>
-<a href="#reservas" class="btn-reserva">📅 Reservar Ahora</a>
-    <section id="reservas">
-    <h2>Reservar la Quinta</h2>
-
-    <form action="https://formspree.io/f/mqeogroa" method="POST">
-        <input type="text" name="nombre" placeholder="Nombre" required>
-        <input type="tel" name="telefono" placeholder="Teléfono" required>
-        <input type="date" name="fecha" required>
-        <input type="number" name="personas" placeholder="Personas" required>
-        <textarea name="mensaje" placeholder="Mensaje"></textarea>
-        <button type="submit">Enviar</button>
-    </form>
-</section>
-<section id="nosotros">
-    <h2>Sobre Nosotros</h2>
-    <p>
-        Bienvenidos a Quinta Vida Plena Enc. Este espacio brinda información,
-        actividades y servicios para toda la comunidad.
-    </p>
-</section>
-
-<section id="rally">
-    <h2>🏁 Rally Mundial Paraguay 2026</h2>
-    <p>
-        Paraguay será sede de una fecha del Campeonato Mundial de Rally.
-        Conoce información, etapas, impacto turístico y participación juvenil.
-    </p>
-
-    <a href="#" class="btn">Más información</a>
-</section>
-
-<section id="galeria">
-    <h2>Galería</h2>
-
-    <div class="tarjetas">
-        <div class="tarjeta">
-            <h3>Instalaciones</h3>
-            <p>Fotografías de Quinta Vida Plena.</p>
-        </div>
-
-        <div class="tarjeta">
-            <h3>Actividades</h3>
-            <p>Eventos y actividades realizadas.</p>
-        </div>
-
-        <div class="tarjeta">
-            <h3>Rally Mundial</h3>
-            <p>Imágenes e información destacada.</p>
-        </div>
+  <header class="nav" aria-label="Navegación principal">
+    <div class="nav-inner">
+      <a class="brand" href="#inicio" aria-label="Quinta Vida Plena Encarnación">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 21s7-4.5 7-11a7 7 0 0 0-14 0c0 6.5 7 11 7 11Z"></path><path d="M9.5 10.5h5"></path><path d="M12 8v5"></path></svg>
+        </span>
+        <span>Quinta Vida Plena</span>
+      </a>
+      <nav class="nav-links" aria-label="Secciones">
+        <a href="#experiencia">Experiencia</a>
+        <a href="#galeria">Galería</a>
+        <a href="#rally">Rally 2026</a>
+        <a href="#reservas">Reservas</a>
+      </nav>
+      <a class="btn" href="#reservas">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M3 10h18"></path></svg>
+        Reservar
+      </a>
     </div>
-</section>
+  </header>
 
-<h2>Contacto</h2>
+  <main id="inicio">
+    <section class="hero" aria-label="Inicio">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11h18"></path><path d="M5 11V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v4"></path><path d="M5 11v7"></path><path d="M19 11v7"></path><path d="M3 18h18"></path></svg>
+            Encarnación, Itapúa
+          </p>
+          <h1>Quinta Vida Plena Encarnación</h1>
+          <p class="hero-copy">Un refugio moderno para descansar, compartir y vivir Encarnación con piscina, áreas verdes y reservas preparadas para escapadas familiares, grupos y visitantes del Rally.</p>
+          <div class="hero-actions">
+            <a class="btn" href="#reservas">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a4 4 0 0 1-4 4H7l-4 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"></path></svg>
+              Consultar disponibilidad
+            </a>
+            <a class="btn secondary" href="#galeria">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"></rect><circle cx="9" cy="9" r="2"></circle><path d="M21 15l-3.1-3.1a2 2 0 0 0-2.8 0L6 21"></path></svg>
+              Ver galería
+            </a>
+          </div>
+        </div>
+        <aside class="availability" aria-label="Resumen de la quinta">
+          <strong>Estadías con calma, comodidad y buen acceso.</strong>
+          <p>Ideal para fines de semana, eventos íntimos y temporadas de alta demanda en Encarnación.</p>
+          <div class="quick-facts">
+            <div class="fact"><b>10+</b><span>huéspedes</span></div>
+            <div class="fact"><b>24h</b><span>consulta</span></div>
+            <div class="fact"><b>2026</b><span>rally</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
 
-    <p><strong>📞 Teléfono:</strong> +595 0992 529 530</p>
+    <section id="experiencia" class="experience">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Diseñada para bajar el ritmo sin alejarse de Encarnación.</h2>
+          <p>Espacios pensados para descansar, cocinar, conversar y disfrutar del aire libre con una estética cálida y contemporánea.</p>
+        </div>
+        <div class="experience-grid">
+          <div class="feature-photo" role="img" aria-label="Casa de descanso rodeada de naturaleza"></div>
+          <div class="amenities">
+            <article class="amenity">
+              <span class="badge"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12h20"></path><path d="M7 12V7a5 5 0 0 1 10 0v5"></path><path d="M5 12v8"></path><path d="M19 12v8"></path></svg></span>
+              <div><h3>Piscina y quincho</h3><p>Ambiente social para almuerzos largos, reuniones familiares y noches tranquilas.</p></div>
+            </article>
+            <article class="amenity">
+              <span class="badge"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22V8"></path><path d="M5 12c0-4 3-8 7-10 4 2 7 6 7 10a7 7 0 0 1-14 0Z"></path></svg></span>
+              <div><h3>Áreas verdes</h3><p>Patio amplio, sombra y rincones para mate, lectura o juegos al aire libre.</p></div>
+            </article>
+            <article class="amenity">
+              <span class="badge"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h18"></path><path d="M6 8h12"></path><path d="M7 16h10"></path><path d="M12 3v18"></path></svg></span>
+              <div><h3>Ubicación práctica</h3><p>Base cómoda para moverse hacia la Costanera, el centro y rutas del departamento.</p></div>
+            </article>
+            <article class="amenity">
+              <span class="badge"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1"></path><path d="M4 20s1-1 4-1 5 2 8 2 4-1 4-1"></path><path d="M12 2v8"></path><path d="M8 6l4-4 4 4"></path></svg></span>
+              <div><h3>Atención flexible</h3><p>Consultas por fecha, cantidad de huéspedes y necesidades especiales antes de reservar.</p></div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    
+    <section id="galeria" class="gallery">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Galería de la experiencia Vida Plena.</h2>
+          <p>Una selección visual para imaginar el día: agua, verde, descanso y la energía cálida de Encarnación.</p>
+        </div>
+        <div class="gallery-grid" aria-label="Galería de imágenes">
+          <button class="gallery-item" type="button" data-full="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=86" aria-label="Ampliar vista exterior">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=82" alt="Casa rodeada de césped y árboles">
+            <span class="gallery-caption">Exterior</span>
+          </button>
+          <button class="gallery-item" type="button" data-full="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1500&q=86" aria-label="Ampliar piscina">
+            <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=700&q=82" alt="Piscina junto a un alojamiento de descanso">
+            <span class="gallery-caption">Piscina</span>
+          </button>
+          <button class="gallery-item" type="button" data-full="https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1500&q=86" aria-label="Ampliar cocina">
+            <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=700&q=82" alt="Cocina moderna con luz natural">
+            <span class="gallery-caption">Cocina</span>
+          </button>
+          <button class="gallery-item" type="button" data-full="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1800&q=86" aria-label="Ampliar naturaleza">
+            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=82" alt="Paisaje verde con agua y montañas">
+            <span class="gallery-caption">Naturaleza</span>
+          </button>
+          <button class="gallery-item" type="button" data-full="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1500&q=86" aria-label="Ampliar dormitorio">
+            <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=700&q=82" alt="Dormitorio luminoso y ordenado">
+            <span class="gallery-caption">Descanso</span>
+          </button>
+          <button class="gallery-item" type="button" data-full="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1500&q=86" aria-label="Ampliar sendero verde">
+            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=700&q=82" alt="Sendero rodeado de árboles">
+            <span class="gallery-caption">Aire libre</span>
+          </button>
+        </div>
+      </div>
+    </section>
 
-    <p><strong>📍 Dirección:</strong> Encarnación, Paraguay</p>
+    <section id="rally" class="rally">
+      <div class="wrap rally-layout">
+        <div>
+          <p class="eyebrow">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 17h14l1-5-3-5H7l-3 5 1 5Z"></path><path d="M7 17v2"></path><path d="M17 17v2"></path><circle cx="8" cy="13" r="1"></circle><circle cx="16" cy="13" r="1"></circle></svg>
+            Especial Rally de Paraguay 2026
+          </p>
+          <h2>Tu base en Encarnación para vivir la fecha mundial.</h2>
+          <p>El Rally del Paraguay 2026 está previsto del 27 al 30 de agosto, con sede en Encarnación y superficie de tierra. Prepará una estadía con descanso real entre jornadas, espacio para grupo y consultas anticipadas por alta demanda.</p>
+          <div class="hero-actions">
+            <a class="btn" href="#reservas">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M3 10h18"></path></svg>
+              Reservar para Rally
+            </a>
+            <a class="btn secondary" href="https://www.wrc.com/" target="_blank" rel="noreferrer">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>
+              Sitio WRC
+            </a>
+          </div>
+        </div>
+        <div class="rally-cards" aria-label="Datos del Rally 2026">
+          <article class="rally-card"><b>27-30 agosto 2026</b><span>Fechas previstas para la ronda paraguaya del campeonato.</span></article>
+          <article class="rally-card"><b>Encarnación, Itapúa</b><span>La ciudad figura como sede central del evento.</span></article>
+          <article class="rally-card"><b>Superficie de tierra</b><span>Una edición pensada para la potencia, el polvo y los caminos del sur.</span></article>
+        </div>
+      </div>
+    </section>
 
-    <p>
-        <a href="https://wa.me/5950992529530" class="btn">
-            WhatsApp
-        </a>
-    </p>
+    <section id="reservas" class="booking">
+      <div class="wrap booking-layout">
+        <aside class="booking-aside">
+          <p class="eyebrow" style="color: var(--leaf-dark);">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a4 4 0 0 1-4 4H7l-4 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"></path></svg>
+            Reservas
+          </p>
+          <h2>Contanos tu fecha ideal.</h2>
+          <p>Completá el formulario y generaremos un mensaje listo para consultar disponibilidad por WhatsApp.</p>
+          <div class="contact-list">
+            <span class="contact-item"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg> Encarnación, Paraguay</span>
+            <span class="contact-item"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.7.6 2.5a2 2 0 0 1-.4 2.1L8 9.6a16 16 0 0 0 6.4 6.4l1.3-1.3a2 2 0 0 1 2.1-.4c.8.3 1.6.5 2.5.6A2 2 0 0 1 22 16.9Z"></path></svg> WhatsApp disponible</span>
+          </div>
+        </aside>
 
-    <iframe
-        src=Quinta Vida Plena https://share.google/gNon3q3hQ3yvDV1fb
-        width="100%"
-        height="350"
-        style="border:0;">
-    </iframe>
-</section>
+        <form id="bookingForm">
+          <label>Nombre
+            <input name="nombre" autocomplete="name" required placeholder="Tu nombre">
+          </label>
+          <label>Teléfono
+            <input name="telefono" autocomplete="tel" required placeholder="+595 ...">
+          </label>
+          <label>Fecha de entrada
+            <input name="entrada" type="date" required>
+          </label>
+          <label>Fecha de salida
+            <input name="salida" type="date" required>
+          </label>
+          <label>Huéspedes
+            <select name="huespedes" required>
+              <option value="">Seleccionar</option>
+              <option>2 a 4 personas</option>
+              <option>5 a 8 personas</option>
+              <option>9 a 12 personas</option>
+              <option>Grupo grande</option>
+            </select>
+          </label>
+          <label>Motivo
+            <select name="motivo" required>
+              <option>Descanso</option>
+              <option>Evento familiar</option>
+              <option>Rally Paraguay 2026</option>
+              <option>Otro</option>
+            </select>
+          </label>
+          <label class="full">Mensaje
+            <textarea name="mensaje" placeholder="Contanos si necesitás quincho, estacionamiento, horarios especiales o detalles del grupo."></textarea>
+          </label>
+          <div class="full form-actions">
+            <button class="btn" type="submit">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 2 11 13"></path><path d="m22 2-7 20-4-9-9-4Z"></path></svg>
+              Enviar consulta
+            </button>
+            <p class="note">El formulario abre WhatsApp con tu consulta lista para enviar.</p>
+          </div>
+          <p id="formStatus" class="form-status full" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
 
-<footer>
-    <p>© 2026 Quinta Vida Plena Enc - Todos los derechos reservados.</p>
-</footer>
+  <footer>
+    <div class="wrap footer-inner">
+      <strong>Quinta Vida Plena Encarnación</strong>
+      <span>Estadías, descanso y reservas especiales para Encarnación.</span>
+    </div>
+  </footer>
 
+  <!-- Reemplazar 5950992529530 por el número real de Quinta Vida Plena. -->
+  <a class="whatsapp-float" href="https://wa.me/5950992529530?text=Hola%20Quinta%20Vida%20Plena%2C%20quiero%20consultar%20disponibilidad." target="_blank" rel="noreferrer" aria-label="Contactar por WhatsApp">
+    <svg width="30" height="30" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12.04 2a9.94 9.94 0 0 0-8.52 15.06L2 22l5.08-1.48A9.96 9.96 0 1 0 12.04 2Zm0 1.88a8.08 8.08 0 0 1 6.83 12.38 8.09 8.09 0 0 1-10.95 2.8l-.36-.21-2.98.86.89-2.9-.23-.38a8.07 8.07 0 0 1 6.8-12.55Zm-3.2 3.7c-.18 0-.47.06-.72.34-.25.27-.95.93-.95 2.26 0 1.33.97 2.62 1.1 2.8.14.18 1.88 3.01 4.65 4.1 2.3.91 2.77.73 3.27.68.5-.04 1.62-.66 1.85-1.3.23-.64.23-1.19.16-1.3-.07-.12-.25-.18-.53-.32-.28-.14-1.62-.8-1.87-.89-.25-.09-.44-.14-.62.14-.18.27-.71.89-.87 1.07-.16.18-.32.2-.6.07-.28-.14-1.17-.43-2.23-1.38-.82-.73-1.38-1.64-1.54-1.91-.16-.28-.02-.43.12-.57.13-.13.28-.32.41-.48.14-.16.18-.27.28-.46.09-.18.05-.34-.02-.48-.07-.14-.62-1.5-.85-2.05-.22-.53-.45-.46-.62-.47h-.53Z"></path></svg>
+  </a>
+
+  <div class="lightbox" id="lightbox" aria-modal="true" role="dialog" aria-label="Imagen ampliada">
+    <button type="button" id="closeLightbox" aria-label="Cerrar imagen">&times;</button>
+    <img id="lightboxImage" alt="">
+  </div>
+
+  <script>
+    const galleryButtons = document.querySelectorAll(".gallery-item");
+    const lightbox = document.querySelector("#lightbox");
+    const lightboxImage = document.querySelector("#lightboxImage");
+    const closeLightbox = document.querySelector("#closeLightbox");
+    const bookingForm = document.querySelector("#bookingForm");
+    const formStatus = document.querySelector("#formStatus");
+    const whatsappNumber = "5950992529530";
+
+    galleryButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const image = button.querySelector("img");
+        lightboxImage.src = button.dataset.full;
+        lightboxImage.alt = image.alt;
+        lightbox.classList.add("open");
+        closeLightbox.focus();
+      });
+    });
+
+    function closeGallery() {
+      lightbox.classList.remove("open");
+      lightboxImage.removeAttribute("src");
+    }
+
+    closeLightbox.addEventListener("click", closeGallery);
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox) closeGallery();
+    });
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeGallery();
+    });
+
+    bookingForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const data = new FormData(bookingForm);
+      const message = [
+        "Hola Quinta Vida Plena, quiero consultar disponibilidad.",
+        `Nombre: ${data.get("nombre")}`,
+        `Telefono: ${data.get("telefono")}`,
+        `Entrada: ${data.get("entrada")}`,
+        `Salida: ${data.get("salida")}`,
+        `Huespedes: ${data.get("huespedes")}`,
+        `Motivo: ${data.get("motivo")}`,
+        `Mensaje: ${data.get("mensaje") || "Sin detalles adicionales"}`
+      ].join("\n");
+
+      formStatus.textContent = "Consulta preparada. Se abrirá WhatsApp para enviarla.";
+      window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+    });
+  </script>
 </body>
 </html>
